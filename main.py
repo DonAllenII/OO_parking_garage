@@ -1,23 +1,34 @@
-Your parking garage class should have the following methods:
-- takeTicket
-- This should decrease the amount of tickets available by 1
-- This should decrease the amount of parkingSpaces available by 1
-- payForParking
-- Display an input that waits for an amount from the user and store it in a variable
-- If the payment variable is not empty then (meaning the ticket has been paid) -> display a message to the user that their ticket has been paid and they have 15mins to leave
-- This should update the "currentTicket" dictionary key "paid" to True
--leaveGarage
-- If the ticket has been paid, display a message of "Thank You, have a nice day"
-- If the ticket has not been paid, display an input prompt for payment
-- Once paid, display message "Thank you, have a nice day!"
-- Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-- Update tickets list to increase by 1 (meaning add to the tickets list)
-
-You will need a few attributes as well:
-- tickets -> list
-- parkingSpaces -> list
+from random import randint
 
 #Create the class parking_garage
 class Parking_garage():
-    def __init__(self):
-        
+    #init attributes
+    def __init__(self,spaces):
+        self.tickets = [x for x in range(spaces)]
+        self.parkingSpaces = [x for x in range(spaces)]
+        self.currentTicket = {}
+
+    def takeTicket(self):  #takeTicket method
+        ticket = randint(1,(len(self.parkingSpaces) - 1))
+        #should decrease the amount of tickets avaiable by 1
+        self.tickets.remove(ticket)
+        #should decrease the amount of parkingSpace avaible by 1
+        self.parkingSpaces.remove(ticket)
+
+        self.currentTicket[ticket] = 'unpaid'
+        return
+
+    def payForParking():
+        #display an input that waits for an amount from the user and store it in a variable
+
+        #if the payment variable is not empty then 
+
+        #update currentTicket dictionary key "paid" to true
+        retun
+    def leaveGarage():
+        #if ticket paid, display a message of "Thank You, have a nice day"
+        #if ticket not pad, display an input prompt for payment
+            #once paid, display message "Thank you, have a nice day!"
+        #update parkingSpaces list to increase by 1
+        #update tickets list to increase by 1
+        return
