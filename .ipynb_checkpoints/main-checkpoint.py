@@ -1,5 +1,5 @@
 from random import randint
-import IPython.display
+from IPython.display import clear_output
 
 #Create the class parking_garage
 class Parking_garage():
