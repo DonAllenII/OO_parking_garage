@@ -1,5 +1,5 @@
 from random import randint
-import IPython.display
+from IPython.display import clear_output
 
 #Create the class parking_garage
 class Parking_garage():
@@ -18,13 +18,15 @@ class Parking_garage():
         self.parkingSpaces.remove(self.ticket)
 
         self.currentTicket['paid'] = False
+        print("\n\n")
+        print(f'You have space #{self.ticket}.')
         return
 
     def payForParking(self):
         #display an input that waits for an amount from the user and store it in a variable
-        payment = float(input('Please enter payment..'))
+        payment = float(input(f'Parking cost is {self.price}. Please enter payment..'))
         #if the payment variable is not empty then 
-        if payment > self.price:
+        if payment >= self.price:
             self.currentTicket['paid'] = True
         #update currentTicket dictionary key "paid" to true
         return
@@ -32,7 +34,7 @@ class Parking_garage():
         while True:
         #if ticket paid, display a message of "Thank You, have a nice day"
             if self.currentTicket['paid'] == True:
-                print('Thank You, have a nice day!')
+                print('\nThank You, have a nice day!')
             #update parkingSpaces list to increase by 1
                 self.tickets.insert(self.ticket, self.ticket)
             #update tickets list to increase by 1
@@ -46,5 +48,20 @@ class Parking_garage():
             if self.currentTicket['paid'] == False:
                 self.payForParking()
                 print('Please pay off ticket in full')
+
+
+    def run(self):
+        while True:
+            answer = str(input(" Press 'P' for a parking ticket\n Press 'E' to pay for parking\n Press 'Q' to quit\n\n\n\n"))
+            if answer.lower() == 'p':
+                self.takeTicket()
+            if answer.lower() == 'e':
+                self.payForParking()
+                self.leaveGarage()
+            if answer.lower() == 'q':
+                break
             
+
+parking_garage = Parking_garage(20, 5.99)
+parking_garage.run()
         
